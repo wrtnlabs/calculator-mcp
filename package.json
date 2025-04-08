@@ -11,7 +11,8 @@
   "bugs": {
     "url": "https://github.com/wrtnlabs/calculator-mcp/issues"
   },
-  "main": "bin/index.js",
+  "main": "dist/index.mjs",
+  "bin": "bin/index.js",
   "files": [
     "LICENSE",
     "README.md",
