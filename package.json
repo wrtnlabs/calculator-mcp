@@ -2,6 +2,7 @@
   "name": "@wrtnlabs/calculator-mcp",
   "type": "module",
   "version": "0.0.2",
+  "packageManager": "pnpm@10.6.4",
   "description": "Calculator MCP",
   "main": "bin/index.js",
   "files": [
