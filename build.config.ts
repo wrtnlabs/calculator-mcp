@@ -29,6 +29,8 @@ export default defineBuildConfig({
       "statuses",
       "inherits",
       "toidentifier",
+
+      "zod-to-json-schema",
     ],
     esbuild: {
       minify: isCI, // minify only in CI and publish
