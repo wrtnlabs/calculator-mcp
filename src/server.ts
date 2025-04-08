@@ -2,7 +2,11 @@ import http from "node:http";
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
+import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
 
+import { add, div, mod, mul, sqrt, sub } from "./tools";
+
+const tools = [add, div, mod, mul, sqrt, sub];
 export async function createServer(options: { name: string; version: string }) {
   const server = new Server({
     name: options.name,
@@ -10,6 +14,37 @@ export async function createServer(options: { name: string; version: string }) {
   }, {
     capabilities: { tools: {} },
   });
+
+  server.setRequestHandler(ListToolsRequestSchema, async () => {
+    return { tools: tools.map(tool => tool.schema) };
+  });
+
+  server.setRequestHandler(CallToolRequestSchema, async (request) => {
+    const tool = tools.find(tool => tool.schema.name === request.params.name);
+    if (tool == null) {
+      return {
+        content: [{ type: "text", text: `Tool "${request.params.name}" not found` }],
+        isError: true,
+      };
+    }
+
+    try {
+      const result = await tool.handle(request.params.arguments ?? {});
+      return result;
+    }
+    catch (error) {
+      return {
+        content: [{ type: "text", text: String(error) }],
+        isError: true,
+      };
+    }
+  });
+
+  const oldClose = server.close.bind(server);
+
+  server.close = async () => {
+    await oldClose();
+  };
 
   return server;
 }
@@ -84,7 +119,7 @@ export async function startSSEServer(options: { port: number; name: string; vers
     console.log("Put this in your client config:");
     console.log(JSON.stringify({
       mcpServers: {
-        playwright: {
+        calculator: {
           url: `${url}/sse`,
         },
       },

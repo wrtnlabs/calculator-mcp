@@ -29,6 +29,8 @@
     "publint": "^0.3.10",
     "std-env": "^3.9.0",
     "typescript": "^5.8.3",
-    "unbuild": "^3.5.0"
+    "unbuild": "^3.5.0",
+    "zod": "^3.24.2",
+    "zod-to-json-schema": "^3.24.5"
   }
 }
