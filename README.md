@@ -60,6 +60,8 @@ npx @wrtnlabs/calculator-mcp@latest --port 8931
 
 And then in MCP client config, set the `url` to the SSE endpoint:
 
+<!-- eslint-skip -->
+
 ```js
 {
   "mcpServers": {
