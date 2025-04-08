@@ -14,10 +14,11 @@
   "scripts": {
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "eslint . --fix && prettier --write .",
+    "format": "eslint . --fix",
     "build": "unbuild",
-    "publint": "publint"
+    "publint": "publint",
+    "prepack": "pnpm build",
+    "release": "pnpm lint && pnpm prepack && publint && pnpm dlx bumpp"
   },
   "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.9.0",
