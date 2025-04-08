@@ -45,3 +45,4 @@ export function run() {
 }
 
 export { program };
+export * from "./server";
