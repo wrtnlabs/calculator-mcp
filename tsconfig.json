@@ -14,7 +14,7 @@
 
     /* Module Resolution Options */
     "moduleResolution": "bundler", /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    "types": ["vitest/globals"],
+    "types": ["node"],
     // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 
     /* Strict Type-Checking Options */
@@ -81,8 +81,6 @@
   "include": [
     "src",
     "build.config.ts",
-    "vitest.config.mts",
-    "vitest.setup.ts",
     "__mocks__",
     "mocks"
   ]

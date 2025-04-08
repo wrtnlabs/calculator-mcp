@@ -1,9 +1,16 @@
 {
-  "name": "calculator-mcp",
+  "name": "@wrtnlabs/calculator-mcp",
   "type": "module",
   "version": "0.0.1",
   "description": "Calculator MCP",
-  "main": "dist/index.js",
+  "main": "bin/index.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "bin",
+    "dist",
+    "package.json"
+  ],
   "scripts": {
     "dev": "unbuild --stub",
     "lint": "eslint .",
@@ -13,12 +20,14 @@
     "publint": "publint"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "@types/node": "^20.14.0",
     "@wrtnlabs/eslint-config": "^0.4.3",
     "commander": "^13.1.0",
     "eslint": "^9.24.0",
     "eslint-plugin-format": "^1.0.1",
     "publint": "^0.3.10",
+    "std-env": "^3.9.0",
     "typescript": "^5.8.3",
     "unbuild": "^3.5.0"
   }
