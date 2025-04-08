@@ -1,0 +1,25 @@
+{
+  "name": "calculator-mcp",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Calculator MCP",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "eslint . --fix && prettier --write .",
+    "build": "unbuild",
+    "publint": "publint"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@wrtnlabs/eslint-config": "^0.4.3",
+    "commander": "^13.1.0",
+    "eslint": "^9.24.0",
+    "eslint-plugin-format": "^1.0.1",
+    "publint": "^0.3.10",
+    "typescript": "^5.8.3",
+    "unbuild": "^3.5.0"
+  }
+}
