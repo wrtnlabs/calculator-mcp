@@ -4,6 +4,13 @@
   "version": "0.0.3",
   "packageManager": "pnpm@10.6.4",
   "description": "Calculator MCP",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wrtnlabs/calculator-mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/wrtnlabs/calculator-mcp/issues"
+  },
   "main": "bin/index.js",
   "files": [
     "LICENSE",
