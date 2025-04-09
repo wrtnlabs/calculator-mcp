@@ -55,6 +55,17 @@ export async function startSSEServer(options: { port: number; name: string; vers
   const httpServer = http.createServer(async (req, res) => {
     switch (req.method) {
       case "GET": {
+        const transport = new SSEServerTransport("/sse", res);
+        sessions.set(transport.sessionId, transport);
+        const server = await createServer(options);
+        res.on("close", () => {
+          sessions.delete(transport.sessionId);
+          server.close().catch(e => console.error(e));
+        });
+        await server.connect(transport);
+        return;
+      }
+      case "POST": {
         const searchParams = new URL(`http://localhost${req.url}`).searchParams;
         const sessionId = searchParams.get("sessionId");
         if (sessionId === null) {
@@ -70,17 +81,6 @@ export async function startSSEServer(options: { port: number; name: string; vers
         }
 
         await transport.handlePostMessage(req, res);
-        return;
-      }
-      case "POST": {
-        const transport = new SSEServerTransport("/sse", res);
-        sessions.set(transport.sessionId, transport);
-        const server = await createServer(options);
-        res.on("close", () => {
-          sessions.delete(transport.sessionId);
-          server.close().catch(e => console.error(e));
-        });
-        await server.connect(transport);
         return;
       }
 
