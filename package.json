@@ -42,5 +42,10 @@
     "unbuild": "^3.5.0",
     "zod": "^3.24.2",
     "zod-to-json-schema": "^3.24.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
