@@ -46,11 +46,6 @@
     "zod": "^3.24.2",
     "zod-to-json-schema": "^3.24.5"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "simple-git-hooks"
-    ]
-  },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
   },
