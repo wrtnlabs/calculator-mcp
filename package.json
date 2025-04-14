@@ -21,6 +21,7 @@
     "package.json"
   ],
   "scripts": {
+    "prepare": "simple-git-hooks",
     "dev": "unbuild --stub",
     "lint": "eslint .",
     "format": "eslint . --fix",
@@ -36,11 +37,26 @@
     "commander": "^13.1.0",
     "eslint": "^9.24.0",
     "eslint-plugin-format": "^1.0.1",
+    "lint-staged": "^15.5.1",
     "publint": "^0.3.10",
+    "simple-git-hooks": "^2.12.1",
     "std-env": "^3.9.0",
     "typescript": "^5.8.3",
     "unbuild": "^3.5.0",
     "zod": "^3.24.2",
     "zod-to-json-schema": "^3.24.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "simple-git-hooks"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --fix"
+    ]
   }
 }
