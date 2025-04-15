@@ -11,7 +11,14 @@
   "bugs": {
     "url": "https://github.com/wrtnlabs/calculator-mcp/issues"
   },
-  "main": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
   "bin": "bin/index.js",
   "files": [
     "LICENSE",

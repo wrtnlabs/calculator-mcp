@@ -5,13 +5,17 @@ import pkgJson from "./package.json";
 
 export default defineBuildConfig({
   outDir: "dist",
-  entries: ["src/index.ts"],
-  declaration: false,
+  entries: [
+    "src/index.ts",
+    "src/cli.ts",
+  ],
+  declaration: true,
   clean: true,
   replace: {
     "process.env.SERVER_VERSION": JSON.stringify(pkgJson.version), // replace version from package.json on build
   },
   rollup: {
+    emitCJS: true,
     inlineDependencies: [
       "commander",
 
