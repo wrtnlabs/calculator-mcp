@@ -76,15 +76,24 @@ And then in MCP client config, set the `url` to the SSE endpoint:
 
 ```js
 import { createServer } from "@wrtnlabs/calculator-mcp";
+// ... other import statement
 
-// ...
+const client = new Client({
+  name: "test client",
+  version: "0.1.0",
+});
 
 const server = createServer({
   name: "calculator",
   version: "1.0.0"
 });
-transport = new SSEServerTransport("/messages", res);
-server.connect(transport);
+
+const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
+
+await Promise.all([
+  client.connect(clientTransport),
+  server.connect(serverTransport),
+]);
 ```
 
 ### Tools

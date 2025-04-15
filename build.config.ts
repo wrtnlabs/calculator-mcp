@@ -7,7 +7,7 @@ export default defineBuildConfig({
   outDir: "dist",
   entries: [
     "src/index.ts",
-    "src/server.ts",
+    "src/cli.ts",
   ],
   declaration: true,
   clean: true,
