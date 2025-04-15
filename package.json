@@ -17,11 +17,6 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
-    "./server": {
-      "types": "./dist/server.d.ts",
-      "import": "./dist/server.mjs",
-      "require": "./dist/server.cjs"
-    },
     "./package.json": "./package.json"
   },
   "bin": "bin/index.js",
