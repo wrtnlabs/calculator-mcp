@@ -13,9 +13,14 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
@@ -29,13 +34,12 @@
   ],
   "scripts": {
     "prepare": "simple-git-hooks",
-    "dev": "unbuild --stub",
+    "dev": "tsdown --watch",
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "build": "unbuild",
-    "publint": "publint",
+    "build": "tsdown",
     "prepack": "pnpm build",
-    "release": "pnpm lint && pnpm prepack && publint && pnpm dlx bumpp"
+    "release": "pnpm lint && pnpm prepack && pnpm dlx bumpp"
   },
   "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.9.0",
@@ -48,8 +52,9 @@
     "publint": "^0.3.10",
     "simple-git-hooks": "^2.12.1",
     "std-env": "^3.9.0",
+    "tsdown": "^0.9.0",
     "typescript": "^5.8.3",
-    "unbuild": "^3.5.0",
+    "unplugin-unused": "^0.4.4",
     "zod": "^3.24.2",
     "zod-to-json-schema": "^3.24.5"
   },
