@@ -20,7 +20,7 @@ This server enables LLMs to interact with calculator.
       "command": "npx",
       "args": [
         "-y",
-        "@wrtnlabs/calculator@latest"
+        "@wrtnlabs/calculator-mcp@latest"
       ]
     }
   }
