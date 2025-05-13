@@ -19,6 +19,7 @@
     },
     "./package.json": "./package.json"
   },
+  "types": "./dist/index.d.ts",
   "bin": "bin/index.js",
   "files": [
     "LICENSE",
